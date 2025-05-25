@@ -31,27 +31,28 @@ function App() {
 
       setResults(cleanedItems);
 
-      const allWords = cleanedItems
-        .flatMap((item) => item.title.split(/\s+/))
-        .map((word) => word.trim().replace(/[^\w가-힣0-9]/g, ''))
-        .filter((word) => word.length > 1);
+      // const allWords = cleanedItems
+      //   .flatMap((item) => item.title.split(/\s+/))
+      //   .map((word) => word.trim().replace(/[^\w가-힣0-9]/g, ''))
+      //   .filter((word) => word.length > 1);
 
-      const freqMap = {};
-      allWords.forEach((word) => {
-        freqMap[word] = (freqMap[word] || 0) + 1;
-      });
+      // const freqMap = {};
+      // allWords.forEach((word) => {
+      //   freqMap[word] = (freqMap[word] || 0) + 1;
+      // });
 
-      const finalMap = {};
-      const words = Object.keys(freqMap);
+      // const finalMap = {};
+      // const words = Object.keys(freqMap);
 
-      words.forEach((word) => {
-        const isComposite = words.some((other) => other !== word && word.includes(other) && freqMap[other] >= 2);
-        if (!isComposite) {
-          finalMap[word] = freqMap[word];
-        }
-      });
+      // words.forEach((word) => {
+      //   const isComposite = words.some((other) => other !== word && word.includes(other) && freqMap[other] >= 2);
+      //   if (!isComposite) {
+      //     finalMap[word] = freqMap[word];
+      //   }
+      // });
 
-      setKeywords(finalMap);
+      // setKeywords(finalMap);
+      setKeywords({});
     } catch (err) {
       console.error('에러 발생:', err);
       setError(err.message);
