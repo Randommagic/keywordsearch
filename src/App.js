@@ -31,15 +31,15 @@ function App() {
 
       setResults(cleanedItems);
 
-      // const allWords = cleanedItems
-      //   .flatMap((item) => item.title.split(/\s+/))
-      //   .map((word) => word.trim().replace(/[^\w가-힣0-9]/g, ''))
-      //   .filter((word) => word.length > 1);
+      const allWords = cleanedItems
+        .flatMap((item) => item.title.split(/\s+/))
+        .map((word) => word.trim().replace(/[^\w가-힣0-9]/g, ''))
+        .filter((word) => word.length > 1);
 
-      // const freqMap = {};
-      // allWords.forEach((word) => {
-      //   freqMap[word] = (freqMap[word] || 0) + 1;
-      // });
+      const freqMap = {};
+      allWords.forEach((word) => {
+        freqMap[word] = (freqMap[word] || 0) + 1;
+      });
 
       // const finalMap = {};
       // const words = Object.keys(freqMap);
@@ -51,8 +51,7 @@ function App() {
       //   }
       // });
 
-      // setKeywords(finalMap);
-      setKeywords({});
+      setKeywords(freqMap);
     } catch (err) {
       console.error('에러 발생:', err);
       setError(err.message);
