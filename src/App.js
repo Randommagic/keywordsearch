@@ -13,16 +13,8 @@ function App() {
   const handleSearch = async (keyword) => {
     setError('');
     try {
-      const response = await fetch(
-        `https://openapi.naver.com/v1/search/shop.json?query=${encodeURIComponent(keyword)}&display=50`,
-        {
-          method: 'GET',
-          headers: {
-            'X-Naver-Client-Id': 'iUxYoY4bMJeimLbQgmU0',
-            'X-Naver-Client-Secret': 'Tgx8LUWE9g',
-          },
-        }
-      );
+      // ✅ 프록시 API 경유
+      const response = await fetch(`/api/search?query=${encodeURIComponent(keyword)}`);
 
       if (!response.ok) {
         const errText = await response.text();
